@@ -1,0 +1,70 @@
+.designFormulario{
+    margin-top: 50px;
+  
+   grid-template-columns: auto;
+   width: 50%;
+background: #ffff;
+
+padding: 3%;
+
+text-align: center;
+margin-bottom: 100px;
+border-radius: 5px; /* Bordes redondeados */
+
+box-shadow: inset 0 0 1px #4c4c4c , inset 0 0 2px #4c4c4c;
+
+}
+
+.design_box{
+   display: grid;
+}
+
+
+.design_button{
+    background: #1f81f2;
+    border: 0px ;
+   
+
+    font-weight: bold;
+    color:  rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-top: 5%;
+   
+    padding: 10px;
+   
+   }
+
+
+.input{
+  
+padding: 5px;
+margin-top: 50px;
+
+
+padding: 15px; /* Espaciado interno */
+place-content: #ffff;
+border: 1px solid #d8d8d8; /* Color del borde */
+border-radius: 5px; /* Bordes redondeados */
+font-size: 16px; /* Tamaño de fuente */
+box-shadow: inset 0 1px 3px rgba(0, 140, 255, 0.1); /* Sombra interna */
+transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones */
+
+}
+ .input:focus{
+    border-color: #1f81f2;
+    box-shadow:0px 0px 0px  #1f81f2,
+                 0px 0px 3px  #67aeff;
+
+    outline: none;
+ }
+
+ .input::placeholder {
+   
+    color: #aeaeae; /* Color del texto placeholder */
+    opacity: 1; /* Asegura que la opacidad sea 1 para una mayor compatibilidad */
+  }
+
+  .text{
+   color: #4c4c4c;
+
+  }
