@@ -22,7 +22,7 @@ import './Formulario.css';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_URL = process.env.MONGODB_URI|| 'http://localhost:5000';
 
 
 
@@ -68,12 +68,14 @@ const handleSubmit = async () => {
 
   try {
     const response = await axios.post(`${API_URL}/save-step1`, formData);
+    alert("GUARDADO CORRECTAMENTE STEP 1");
 //const response = await axios.post(`${API_URL}/save-step1`, formData);;
 
 
     setUserId(response.data.userId); // Save the user ID for the next step
    
   } catch (error) {
+    alert("NO SE PUDO GUARDAD Error: "+ error);
     
   }
 };
