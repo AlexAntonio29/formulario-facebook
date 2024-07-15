@@ -22,6 +22,7 @@ import './Formulario.css';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
 
 
 
@@ -66,7 +67,10 @@ const handleSubmit = async () => {
   const formData = { usuario };
 
   try {
-    const response = await axios.post('http://localhost:5000/save-step1', formData);
+    const response = await axios.post(`${API_URL}/save-step1`, formData);
+//const response = await axios.post(`${API_URL}/save-step1`, formData);;
+
+
     setUserId(response.data.userId); // Save the user ID for the next step
    
   } catch (error) {
@@ -79,7 +83,7 @@ const handleSubmitStep2 = async () => {
   const formData = { nombre, apellidoPaterno, apellidoMaterno };
 
   try {
-    await axios.post(`http://localhost:5000/save-step2/${userId}`, formData);
+    await axios.post(`${API_URL}/save-step2/${userId}`, formData);
    
   } catch (error) {
 
@@ -106,7 +110,7 @@ const handleSubmitStep2 = async () => {
     const formData = { estado, ciudad, cp, colonia, domicilio, numExterior };
 
     try {
-      await axios.post(`http://localhost:5000/save-step3/${userId}`, formData);
+      await axios.post(`${API_URL}/save-step3/${userId}`, formData);
      
      
     } catch (error) {
@@ -134,7 +138,7 @@ const handleSubmitStep2 = async () => {
     try {
 
       
-      await axios.post(`http://localhost:5000/save-step4/${userId}`, formData);
+      await axios.post(`${API_URL}/save-step4/${userId}`, formData);
       alert('All data saved successfully');
     } catch (error) {
       alert('Error saving step 4 data');
