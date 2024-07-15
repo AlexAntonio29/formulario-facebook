@@ -1,3 +1,6 @@
+
+console.log("Starting server.js  HOLA QUE TAL");
+
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
