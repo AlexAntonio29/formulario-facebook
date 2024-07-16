@@ -47,12 +47,14 @@ const User = mongoose.model('User', userSchema);
 // Ruta para guardar la primera parte de los datos
 app.post('/save-step1', async (req, res) => {
   const { usuario } = req.body;
-
+    console.log("ESTOY DENTRO DE USUARIO PARA GUARDAR")
   const newUser = new User({ usuario });
   try {
+
     const savedUser = await newUser.save();
     res.status(200).send({ message: 'Step 1 data saved successfully', userId: savedUser._id });
   } catch (error) {
+    console.log("NO ME PUDE GUARDAR:  "+error);
     res.status(500).send('Error saving step 1 data');
   }
 });
