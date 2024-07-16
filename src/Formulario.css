@@ -2,10 +2,12 @@
     margin-top: 50px;
   
    grid-template-columns: auto;
-   width: 50%;
+   width: 40%;
 background: #ffff;
 min-width: 320px;
-min-width: 320px;
+min-height: 320px;
+align-items: center;
+
 padding: 3%;
 
 text-align: center;
