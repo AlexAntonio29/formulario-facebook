@@ -22,7 +22,7 @@ import './Formulario.css';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
 
-const API_URL = process.env.MONGODB_URI|| 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_API_URL|| 'https://formulario-facebook-backend.onrender.com';
 
 
 
