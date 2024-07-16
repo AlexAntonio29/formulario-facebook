@@ -68,7 +68,7 @@ const handleSubmit = async () => {
 
   try {
     const response = await axios.post(`${API_URL}/save-step1`, formData);
-    alert("GUARDADO CORRECTAMENTE STEP 1");
+    
 //const response = await axios.post(`${API_URL}/save-step1`, formData);;
 
 
@@ -86,7 +86,7 @@ const handleSubmitStep2 = async () => {
 
   try {
     await axios.post(`${API_URL}/save-step2/${userId}`, formData);
-    alert("GUARDADO CORRECTAMENTE STEP 2");
+  
   } catch (error) {
     alert("ERROR AL GUARDAR STEP 2");
   }
@@ -113,8 +113,7 @@ const handleSubmitStep2 = async () => {
 
     try {
       await axios.post(`${API_URL}/save-step3/${userId}`, formData);
-     
-        alert('All data saved STEP 3');
+   
      
     } catch (error) {
      
@@ -142,7 +141,7 @@ const handleSubmitStep2 = async () => {
 
       
       await axios.post(`${API_URL}/save-step4/${userId}`, formData);
-      alert('All data saved successfully');
+     
     } catch (error) {
       alert('Error saving step 4 data');
     }
