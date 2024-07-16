@@ -1,5 +1,5 @@
 
-console.log("Starting server.js  HOLA QUE TAL");
+console.log("Starting server.js  HOLA QUE TAL SOY SERVER.JS");
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -47,9 +47,12 @@ const User = mongoose.model('User', userSchema);
 // Ruta para guardar la primera parte de los datos
 app.post('/save-step1', async (req, res) => {
   const { usuario } = req.body;
-
+  console.log("ESTAMOS EN ESTADO DE GUARDADO DE USUARIO");
   const newUser = new User({ usuario });
   try {
+
+
+
     const savedUser = await newUser.save();
     res.status(200).send({ message: 'Step 1 data saved successfully', userId: savedUser._id });
   } catch (error) {
