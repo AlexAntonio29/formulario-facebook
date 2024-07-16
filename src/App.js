@@ -167,7 +167,7 @@ const handleSubmitStep2 = async () => {
 
   let actionVisibilityFinal=(e)=>{
 
-    alert("Final");
+    
   }
 
 
@@ -340,8 +340,7 @@ setCorreo(e);
           {isVisiblePersonales && <button  className='design_button' onClick={e=>actionVisibilityPersonales(true)}>Continuar</button> }
           {isVisibleLocalizacion && <button  className='design_button' onClick={e=>actionVisiblityLoc(true)}>Continuar</button> }
           {isVisiblePrivados && <button  className='design_button' onClick={e=>actionVisiblityPriv(true)}>Continuar</button> }
-          {isVisibleFinal && <button  className='design_button' onClick={e=>actionVisibilityFinal(true)}>Continuar</button> }
-
+         
         </div>
 
       </header>
