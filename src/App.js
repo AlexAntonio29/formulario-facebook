@@ -114,10 +114,11 @@ const handleSubmitStep2 = async () => {
     try {
       await axios.post(`${API_URL}/save-step3/${userId}`, formData);
      
+        alert('All data saved successfully');
      
     } catch (error) {
      
-    }
+    }   alert('ERROR SAVED');
   };
 
   let actionVisiblityLoc=(e)=>{
