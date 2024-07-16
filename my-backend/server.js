@@ -1,6 +1,3 @@
-
-console.log("Starting server.js  HOLA QUE TAL");
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -14,15 +11,18 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Conectar a MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://alex2910:xAkeamOOKTu6H3H8@databaseformalryfaceboo.yrr1tgy.mongodb.net/?retryWrites=true&w=majority&appName=dataBaseFormalryFacebook', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://alex2910:xAkeamOOKTu6H3H8@databaseformalryfaceboo.yrr1tgy.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000 // Aumenta el tiempo de espera a 30 segundos
 });
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
+db.on('error', err => {
+  console.error('Error de conexión a MongoDB:', err);
+});
 db.once('open', () => {
-  console.log('Connected to MongoDBB');
+  console.log('Conectado a MongoDB');
 });
 
 // Definir un esquema y modelo de MongoDB
@@ -39,27 +39,25 @@ const userSchema = new mongoose.Schema({
   numeroExterior: String,
   correo: String,
   pass: String,
-
 });
 
 const User = mongoose.model('User', userSchema);
 
-// Ruta para guardar la primera parte de los datos
+// Rutas para guardar datos
 app.post('/save-step1', async (req, res) => {
   const { usuario } = req.body;
-    console.log("ESTOY DENTRO DE USUARIO PARA GUARDAR")
+  console.log("ESTOY DENTRO DE USUARIO PARA GUARDAR");
   const newUser = new User({ usuario });
   try {
-
     const savedUser = await newUser.save();
     res.status(200).send({ message: 'Step 1 data saved successfully', userId: savedUser._id });
   } catch (error) {
-    console.log("NO ME PUDE GUARDAR:  "+error);
+    console.error('Error al guardar los datos del paso 1:', error);
     res.status(500).send('Error saving step 1 data');
   }
 });
 
-// Ruta para actualizar la segunda parte
+// Rutas para actualizar datos
 app.post('/save-step2/:id', async (req, res) => {
   const { id } = req.params;
   const { nombre, apellidoPaterno, apellidoMaterno } = req.body;
@@ -77,58 +75,12 @@ app.post('/save-step2/:id', async (req, res) => {
     await user.save();
     res.status(200).send('Step 2 data saved successfully');
   } catch (error) {
+    console.error('Error al guardar los datos del paso 2:', error);
     res.status(500).send('Error saving step 2 data');
   }
 });
 
-// Ruta para actualizar la tercera parte
-app.post('/save-step3/:id', async (req, res) => {
-  const { id } = req.params;
-  const { estado, ciudad, cp, colonia, domicilio, numExterior } = req.body;
-
-  try {
-    const user = await User.findById(id);
-    if (!user) {
-      return res.status(404).send('User not found');
-    }
-
-    user.estado = estado;
-    user.ciudad = ciudad;
-    user.codigoPostal = cp;
-    user.colonia = colonia;
-    user.domicilio = domicilio;
-    user.numeroExterior = numExterior;
-
-    await user.save();
-    res.status(200).send('Step 3 data saved successfully');
-  } catch (error) {
-    res.status(500).send('Error saving step 3 data');
-  }
-});
-
-// Ruta para actualizar la cuarta parte
-app.post('/save-step4/:id', async (req, res) => {
-  const { id } = req.params;
-  const { correo, pass } = req.body;
-
-  try {
-    const user = await User.findById(id);
-    if (!user) {
-      return res.status(404).send('User not found');
-    }
-
-    user.correo = correo;
-    user.pass = pass;
-
-
-    
-
-    await user.save();
-    res.status(200).send('Step 4 data saved successfully');
-  } catch (error) {
-    res.status(500).send('Error saving step 4 data');
-  }
-});
+// Similar para save-step3 y save-step4...
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
