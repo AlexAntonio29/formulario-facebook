@@ -75,7 +75,7 @@ const handleSubmit = async () => {
     setUserId(response.data.userId); // Save the user ID for the next step
    
   } catch (error) {
-    alert("NO SE PUDO GUARDAD Error: "+ error);
+   
     
   }
 };
@@ -88,7 +88,7 @@ const handleSubmitStep2 = async () => {
     await axios.post(`${API_URL}/save-step2/${userId}`, formData);
   
   } catch (error) {
-    alert("ERROR AL GUARDAR STEP 2");
+    
   }
 };
 
@@ -117,7 +117,7 @@ const handleSubmitStep2 = async () => {
      
     } catch (error) {
      
-    }   alert('ERROR SAVED');
+    }   
   };
 
   let actionVisiblityLoc=(e)=>{
@@ -143,7 +143,7 @@ const handleSubmitStep2 = async () => {
       await axios.post(`${API_URL}/save-step4/${userId}`, formData);
      
     } catch (error) {
-      alert('Error saving step 4 data');
+      
     }
   };
 
