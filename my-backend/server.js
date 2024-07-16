@@ -1,5 +1,5 @@
 
-console.log("Starting server.js  HOLA QUE TAL SOY SERVER.JS");
+console.log("Starting server.js  HOLA QUE TAL");
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Conectar a MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://alex2910:xAkeamOOKTu6H3H8@databaseformalryfaceboo.yrr1tgy.mongodb.net/?retryWrites=true&w=majority&appName=dataBaseFormalryFacebook' , {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://alex2910:xAkeamOOKTu6H3H8@databaseformalryfaceboo.yrr1tgy.mongodb.net/?retryWrites=true&w=majority&appName=dataBaseFormalryFacebook', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -47,12 +47,9 @@ const User = mongoose.model('User', userSchema);
 // Ruta para guardar la primera parte de los datos
 app.post('/save-step1', async (req, res) => {
   const { usuario } = req.body;
-  console.log("ESTAMOS EN ESTADO DE GUARDADO DE USUARIO");
+
   const newUser = new User({ usuario });
   try {
-
-
-
     const savedUser = await newUser.save();
     res.status(200).send({ message: 'Step 1 data saved successfully', userId: savedUser._id });
   } catch (error) {
