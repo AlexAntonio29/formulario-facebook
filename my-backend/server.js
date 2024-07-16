@@ -19,10 +19,10 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://alex2910:xAkeamOOKTu6
 
 const db = mongoose.connection;
 db.on('error', err => {
-  console.error('Error de conexión a MongoDB:', err);
+  console.error('ERROR DE CONEXION A MONGODB ALXXX', err);
 });
 db.once('open', () => {
-  console.log('Conectado a MongoDB');
+  console.log('CONECTADO A MONGODB ALXXX');
 });
 
 // Definir un esquema y modelo de MongoDB
