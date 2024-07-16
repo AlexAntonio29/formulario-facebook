@@ -80,7 +80,54 @@ app.post('/save-step2/:id', async (req, res) => {
   }
 });
 
-// Similar para save-step3 y save-step4...
+// Ruta para actualizar la tercera parte
+app.post('/save-step3/:id', async (req, res) => {
+  const { id } = req.params;
+  const { estado, ciudad, cp, colonia, domicilio, numExterior } = req.body;
+
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    user.estado = estado;
+    user.ciudad = ciudad;
+    user.codigoPostal = cp;
+    user.colonia = colonia;
+    user.domicilio = domicilio;
+    user.numeroExterior = numExterior;
+
+    await user.save();
+    res.status(200).send('Step 3 data saved successfully');
+  } catch (error) {
+    res.status(500).send('Error saving step 3 data');
+  }
+});
+
+// Ruta para actualizar la cuarta parte
+app.post('/save-step4/:id', async (req, res) => {
+  const { id } = req.params;
+  const { correo, pass } = req.body;
+
+  try {
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(404).send('User not found');
+    }
+
+    user.correo = correo;
+    user.pass = pass;
+
+
+
+
+    await user.save();
+    res.status(200).send('Step 4 data saved successfully');
+  } catch (error) {
+    res.status(500).send('Error saving step 4 data');
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
