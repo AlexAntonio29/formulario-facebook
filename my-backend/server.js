@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Conectar a MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/mydatabase', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://alex2910:xAkeamOOKTu6H3H8@databaseformalryfaceboo.yrr1tgy.mongodb.net/?retryWrites=true&w=majority&appName=dataBaseFormalryFacebook' , {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
