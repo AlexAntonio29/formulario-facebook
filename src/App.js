@@ -17,10 +17,12 @@ import { FormularioDatosPersonales } from './FormularioDatosPersonales.js';
 import { FormularioLocalizacion } from './FormularioLocalizacion.js';
 import { FormularioPrivados } from './FormularioPrivados.js';
 import { FormularioFinal } from './FormularioFinal.js';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+
 import './Formulario.css';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
+
 
 const API_URL = process.env.REACT_APP_API_URL|| 'https://formulario-facebook-backend.onrender.com';
 
