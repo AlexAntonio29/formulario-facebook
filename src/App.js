@@ -34,7 +34,7 @@ function App() {
     // Función para hacer el log
     const logMessage = () => {
       console.log('Update');
-      API_URL = process.env.REACT_APP_API_URL|| 'https://formulario-facebook-backend.onrender.com';
+      
     };
 
     // Establecer el intervalo
