@@ -28,6 +28,21 @@ const API_URL = process.env.REACT_APP_API_URL|| 'https://formulario-facebook-bac
 
 function App() {
 
+  useEffect(() => {
+    // Función para hacer el log
+    const logMessage = () => {
+      console.log('Update');
+    };
+
+    // Establecer el intervalo
+    const intervalId = setInterval(logMessage, 30000);
+
+    // Limpiar el intervalo cuando el componente se desmonte
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+
 
 
 
