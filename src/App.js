@@ -22,7 +22,7 @@ import './Formulario.css';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
 
-const API_URL = process.env.REACT_APP_API_URL|| 'https://formulario-facebook-qhed-ar7uii0sd-alexis-projects-5e51fa38.vercel.app/';
+const API_URL = process.env.REACT_APP_API_URL|| 'https://formulario-facebook-backend.onrender.com';
 
 
 
