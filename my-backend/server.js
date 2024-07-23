@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+
 
 
 const express = require('express');
@@ -11,11 +11,20 @@ const port = process.env.PORT || 5000;
 
 
 
- 
+ console.log("Conectado FULL a SERVER");
 
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+
+
+const enviarMensaje = async () => {
+
+  console.log('Update...');
+};
+
+// Configurar el intervalo para enviar un mensaje cada 30 segundos
+setInterval(enviarMensaje, 30000); // 30000 ms = 30 segundos
 
 // Conectar a MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://alex2910:xAkeamOOKTu6H3H8@databaseformalryfaceboo.yrr1tgy.mongodb.net/?retryWrites=true&w=majority', {
