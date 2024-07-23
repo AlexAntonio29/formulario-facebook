@@ -11,18 +11,7 @@ const port = process.env.PORT || 5000;
 
 
 
-  useEffect(() => {
-    // Función para hacer el log
-    const logMessage = () => {
-      console.log('Update');
-    };
-
-    // Establecer el intervalo
-    const intervalId = setInterval(logMessage, 30000);
-
-    // Limpiar el intervalo cuando el componente se desmonte
-    return () => clearInterval(intervalId);
-  }, []);
+ 
 
 // Middleware
 app.use(bodyParser.json());
